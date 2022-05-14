@@ -1,0 +1,17 @@
+server {
+	listen 443 ssl;
+	listen [::]:443 ssl;
+
+	root /var/www/html; # 페이지를 불러올 위치
+
+	index index.html index.nginx-debian.html; # 페이지 파일 이름 (순서대로 찾아서 있는 녀석을 보여줌)
+
+	ssl on;
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_certificate /etc/ssl/certs/server.crt; # 인증서 파일
+	ssl_certificate_key /etc/ssl/private/server.key; # 인증키 파일
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
