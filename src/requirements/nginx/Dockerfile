@@ -1,7 +1,7 @@
 # 기존에 작성했었던 부분
 FROM debian:buster
 
-RUN apt-get update -y && apt upgrade -y
+RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install nginx -y
 
 # 컨테이너에 openssl 설치하기
@@ -30,4 +30,3 @@ RUN mv server.crt /etc/ssl/certs/
 RUN mv server.key /etc/ssl/private/
 
 CMD nginx -g "daemon off;"
-# ENTRYPOINT ["nginx", "-g", "daemon off;"]
