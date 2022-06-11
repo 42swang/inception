@@ -29,4 +29,5 @@ RUN openssl req -x509 -days 365 -in server.csr -key server.key -out server.crt
 RUN mv server.crt /etc/ssl/certs/
 RUN mv server.key /etc/ssl/private/
 
-CMD nginx -g "daemon off;"
+# 컨테이너가 실행 될 때 변경의 위험이 있는 CMD보다는 명확한 ENTRYPOINT로 명령어를 실행
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
